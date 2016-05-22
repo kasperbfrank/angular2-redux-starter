@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 
+import { _userEvents, _users, _selectedUser  } from './user.reducers';
 import { UtilsService } from '../../services/utils.service';
 
 
@@ -14,39 +15,9 @@ export interface User {
   email: string;
 }
 
-const userEvents = {
-  ADD: 'ADD_USERS',
-  CREATE: 'CREATE_USER',
-  UPDATE: 'UPDATE_USER',
-  REMOVE: 'DELETE_USER',
-  SELECT: 'SELECT_USER'
-};
-
-export const users = (state: any = [], { type, payload }) => {
-  switch (type) {
-    case userEvents.ADD:
-      return payload;
-    case userEvents.CREATE:
-      return [...state, payload];
-    case userEvents.UPDATE:
-      return state.map(data => {
-        return data.id === payload.id ? Object.assign({}, data, payload) : data;
-      });
-    case userEvents.REMOVE:
-      return state.filter(data => { return data.id !== payload.id; });
-    default:
-      return state;
-  }
-};
-
-export const selectedUser = (state: any = [], { type, payload }) => {
-  switch (type) {
-    case userEvents.SELECT:
-      return payload;
-    default:
-      return state;
-  }
-};
+export const userEvents = _userEvents;
+export const users = _users;
+export const selectedUser = _selectedUser;
 
 @Injectable()
 export class UserService {
