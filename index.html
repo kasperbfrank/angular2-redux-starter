@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+	<meta name = "viewport" content="width=320,initial-scale=2.3,user-scalable=no">
+	<title>Nordex Datalog</title>
+	<link href="main.css" rel="stylesheet" />
+
+	<script src="node_modules/es6-shim/es6-shim.min.js"></script>
+	<script src="node_modules/zone.js/dist/zone.js"></script>
+	<script src="node_modules/reflect-metadata/Reflect.js"></script>
+	<script src="node_modules/systemjs/dist/system.src.js"></script>
+	<script src="systemjs.config.js"></script>
+	<script>
+		System.import('app')
+			.catch(function(err) { console.error(err); });
+	</script>
+</head>
+<base href="/~Casper/ng2-redux-starter/">
+<body>
+
+  <app>App loading...</app>
+
+</body>
+</html>
