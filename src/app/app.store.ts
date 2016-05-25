@@ -8,22 +8,33 @@ import {
   users,
   selectedUser
 } from '../users/service/user.service';
+import {
+  Item,
+  items,
+  selectedItem,
+  ItemService
+} from '../items/service/item.service';
 import { UtilsService } from '../services/utils.service';
 
 
 export const appStore = {
   users: users,
   selectedUser: selectedUser,
+  items: items,
+  selectedItem: selectedItem
 };
 
 export interface AppStore {
   users: User[];
   selectedUser: User;
+  items: Item[];
+  selectedItem: Item;
 }
 
 @Injectable()
 export class AppStoreService {
   users: UserService;
+  items: ItemService;
 
   constructor(
     private http: Http,
@@ -31,5 +42,6 @@ export class AppStoreService {
     private utils: UtilsService
   ) {
     this.users = new UserService(this.http, this.store, this.utils);
+    this.items = new ItemService(this.store);
   }
 }
