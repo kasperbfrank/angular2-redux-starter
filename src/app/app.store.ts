@@ -42,6 +42,6 @@ export class AppStoreService {
     private utils: UtilsService
   ) {
     this.users = new UserService(this.http, this.store, this.utils);
-    this.items = new ItemService(this.store);
+    this.items = new ItemService(this.http, this.store);
   }
 }
